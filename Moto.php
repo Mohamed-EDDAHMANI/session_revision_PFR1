@@ -10,14 +10,8 @@ class Moto extends Vehicule implements ReservableInterface
         $this->cylindree = $cylindree;
     }
 
-    public function reserver( $client,  $dateDebut,  $nbJours) {
-        if ($this->getDisponible()) {
-            return 'le Vehicule est deja reserve';
-        } else {
-            $this->setDisponible(false);
-            return 'le Vehicule est reserve avec succes';
-        }
-        return new Reservation($vehicule, $client, $dateDebut, $nbJours, true);
+    public function reserver( $client,  $dateDebut,  $nbJours): Reservation {
+        return new Reservation($this, $client, $dateDebut, $nbJours, false);
     }
 
     public function getType()

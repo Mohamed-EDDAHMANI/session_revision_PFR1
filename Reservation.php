@@ -23,14 +23,15 @@ class Reservation
 
     public function confirmer()
     {
-        if (!$this->getDisponible()) {
+        if (!$this->vehicule->getDisponible()) {
             $this->statut = true;
-            $this->vehicule->setDisponible(false);
+            $this->vehicule->setDisponible(true);
         }
     }
     public function annuler()
     {
-
+        $this->statut = false;
+        $this->vehicule->setDisponible(false);
     }
 
     public function getVehicule()

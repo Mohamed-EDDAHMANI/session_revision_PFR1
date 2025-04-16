@@ -5,14 +5,15 @@ class Voiture extends Vehicule implements ReservableInterface
     private $nbPortes;
     private $transmission;
 
-    public function __construct( $nbPortes, $transmission)
+    public function __construct($id, $immatriculation, $marque, $modele, $prixJour, $disponible, $nbPortes, $transmission)
     {
+        parent::__construct($id, $immatriculation, $marque, $modele, $prixJour, $disponible);
         $this->nbPortes = $nbPortes;
         $this->transmission = $transmission;
     }
 
-    public function reserver($client, $dateDebut, $nbJours) {
-        return ;
+    public function reserver( $client,  $dateDebut,  $nbJours): Reservation {
+        return new Reservation($this, $client, $dateDebut, $nbJours, false);
     }
 
     public function getType()
